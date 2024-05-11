@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+$screen-big1599: 1599px;
+$screen-big1399: 1399px;
+$screen-big1199: 1199px;
+$screen-big1023: 1023px;
+$screen-big991: 991px;
+$screen-big767: 767px;
+
+
+$screen-big900: 900px;
+$screen-big800: 800px;
+$screen-big700: 700px;
+$screen-big600: 600px;
+
+
+@mixin big1 {
+  @media (max-width: #{$screen-big1599}) {
+    @content;
+  }
+}
+
+@mixin big2 {
+  @media (max-width: #{$screen-big1399}) {
+    @content;
+  }
+}
+
+@mixin big3 {
+  @media (max-width: #{$screen-big1199}) {
+    @content;
+  }
+}
+
+@mixin big4 {
+  @media (max-width: #{$screen-big1023}) {
+    @content;
+  }
+}
+
+@mixin big5 {
+  @media (max-width: #{$screen-big991}) {
+    @content;
+  }
+}
+
+@mixin big6 {
+  @media (max-width: #{$screen-big767}) {
+    @content;
+  }
+}
+
+@mixin bigh1 {
+  @media (max-height: #{$screen-big900}) {
+    @content;
+  }
+}
+
+@mixin bigh2 {
+  @media (max-height: #{$screen-big800}) {
+    @content;
+  }
+}
+
+@mixin bigh3 {
+  @media (max-height: #{$screen-big700}) {
+    @content;
+  }
+}
+
+@mixin bigh4 {
+  @media (max-height: #{$screen-big600}) {
+    @content;
+  }
+}
+
+
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+
+  @include big5 {
+    background: #000;
+  }
+}
+
+.weblogo {
+  position: absolute;
+  height: 30px;
+  padding: 24px;
+
+  @include big5 {
+    position: unset;
+  }
+}
+
+.featureblockmain {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  @include big5{
+    flex-wrap: unset;
+    height: 100%;
+    width: 100%;
+  }
+
+  .featureblock {
+    display: inline-flex;
+    align-items: center;
+    width: 33.33%;
+    height: 50vh;
+
+    @include big3 {
+      width: 50%;
+    }
+
+    @include big5 {
+      width: 100%;
+      flex-direction: column;
+      height: calc(100vh - 82px);
+      justify-content: center;
+      display: none;
+    }
+
+    &.active {
+      @include big5 {
+        display: inline-flex;
+        gap: 30px;
+      }
+    }
+
+    .featureblockleft {
+      padding: 24px 0 0 48px;
+      width: 60%;
+
+      img {
+        height: 30px;
+        margin: 0 0 16px;
+      }
+
+      h3 {
+        font-size: 16px;
+        color: #fff;
+        font-weight: 500;
+        line-height: normal;
+        margin: 0;
+        max-width: 195px;
+        @include big2 {
+          font-size: 16px;
+        }
+      }
+
+      p {
+        color: #fff;
+        font-size: 14px;
+        line-height: normal;
+        font-weight: 400;
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      .divider {
+        background: #fff;
+        height: 2px;
+        border-radius: 6px;
+        width: 80%;
+        margin: 16px 0;
+      }
+    }
+
+    .featureblockright {
+      width: 50%;
+      padding: 0 24px 0 0;
+      text-align: right;
+
+      @include big2 {
+        width: 50%;
+      }
+
+      @include big5 {
+        width: max-content;
+        text-align: center;
+      }
+
+      img {
+        width: 100%;
+
+        @include bigh1 {
+          width: 85%;
+        }
+
+        @include bigh4 {
+          width: 60%;
+        }
+
+        @include big5 {
+          width: auto;
+        }
+      }
+    }
+
+    &:nth-child(1) {
+      background: #41ca6f;
+    }
+
+    &:nth-child(2) {
+      background: #fab153;
+    }
+
+    &:nth-child(3) {
+      background: #7277d5;
+    }
+
+    &:nth-child(4) {
+      background: #f87d51;
+    }
+
+    &:nth-child(5) {
+      background: #ed5567;
+    }
+
+    &:nth-child(6) {
+      background: #4ec3e7;
+    }
+  }
+}
+
+.arrows {
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  z-index: 99;
+  align-items: center;
+  left: 0;
+  display: none;
+  @include big5{
+    display: flex;
+  }
+
+  &.nextBtn {
+    left: unset;
+    right: 0;
+    svg{
+      transform: rotate(180deg);
+    }
+  }
+  svg{
+    height: 30px;
+    width: 30px;
+  }
+}
+.dots {
+  @include big5 {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 5px;
+    .dot {
+      width: 16PX;
+      height: 16PX;
+      background: #FFF;
+      border: 1px solid #ffffff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .dot.active {
+      background-color: transparent;
+      border: 1px solid #ffffff;
+    }
+  }
+}
